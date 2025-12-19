@@ -1,9 +1,9 @@
-import { Home } from "./components/Home";
-import { Login } from "./components/Login";
-import { Dashboard } from "./components/Dashboard";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
+import { Dashboard } from "./pages/Dashboard";
 import { Profile } from "./components/Profile";
 import { Settings } from "./components/Settings";
-import { statsLoader, Stats } from "./components/Stats";
+import { Stats, statsLoader } from "./pages/Stats"; // Import from the barrel file
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { Navigate } from "react-router-dom";
 

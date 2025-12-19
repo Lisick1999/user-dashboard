@@ -1,15 +1,7 @@
-import { useLoaderData } from 'react-router-dom'
+import { useLoaderData } from 'react-router-dom';
 
-export async function statsLoader() {
-  const response = await fetch('https://jsonplaceholder.typicode.com/users/1')
-  if (!response.ok) {
-    throw new Response("Failed to load stats", { status: 500 })
-  }
-  return response.json()
-}
-
-export const Stats = () => {
-  const user = useLoaderData()
+const Stats = () => {
+  const user = useLoaderData();
 
   return (
     <div>
@@ -35,5 +27,8 @@ export const Stats = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Stats;
+// УБРАТЬ экспорт statsLoader отсюда!
