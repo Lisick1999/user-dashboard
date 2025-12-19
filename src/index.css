@@ -25,7 +25,6 @@ body {
   margin: 20px 0;
 }
 
-/* Home Component */
 .home-container {
   display: flex;
   justify-content: center;
@@ -69,7 +68,6 @@ body {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Login Component */
 .login-container {
   display: flex;
   justify-content: center;
@@ -134,7 +132,6 @@ body {
   transform: translateY(-1px);
 }
 
-/* Dashboard Component */
 .dashboard-container {
   min-height: 100vh;
   padding: 20px;
@@ -203,7 +200,6 @@ body {
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* Profile Component */
 .profile-title {
   font-size: 1.8rem;
   color: #4a5568;
@@ -216,7 +212,6 @@ body {
   line-height: 1.6;
 }
 
-/* Settings Component */
 .settings-title {
   font-size: 1.8rem;
   color: #4a5568;
@@ -228,7 +223,6 @@ body {
   color: #718096;
 }
 
-/* Stats Component */
 .stats-title {
   font-size: 1.8rem;
   color: #4a5568;
@@ -249,7 +243,6 @@ body {
   border-left: 4px solid #667eea;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .container {
     padding: 10px;
@@ -278,7 +271,6 @@ body {
   }
 }
 
-/* Loading States */
 .loading {
   text-align: center;
   padding: 40px;

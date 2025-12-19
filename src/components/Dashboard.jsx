@@ -1,4 +1,5 @@
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
+import { ROUTE_PATHS, NAV_ITEMS } from '../routes'
 
 export const Dashboard = () => {
   const navigate = useNavigate()
@@ -7,14 +8,8 @@ export const Dashboard = () => {
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated')
     localStorage.removeItem('userEmail')
-    navigate('/login')
+    navigate(ROUTE_PATHS.LOGIN)
   }
-
-  const navItems = [
-    { path: 'profile', label: 'Profile' },
-    { path: 'settings', label: 'Settings' },
-    { path: 'stats', label: 'Statistics' }
-  ]
 
   return (
     <div className="dashboard-container">
@@ -22,16 +17,16 @@ export const Dashboard = () => {
         <div className="dashboard-header">
           <h1 className="dashboard-title">Панель пользователя</h1>
           <button className="logout-button" onClick={handleLogout}>
-            Вход
+            Выход
           </button>
         </div>
         
         <nav className="dashboard-nav">
-          {navItems.map((item) => (
+          {NAV_ITEMS.map((item) => (
             <button
               key={item.path}
               onClick={() => navigate(item.path)}
-              className={`nav-button ${location.pathname.includes(item.path) ? 'active' : ''}`}
+              className={`nav-button ${location.pathname === item.path ? 'active' : ''}`}
             >
               {item.label}
             </button>
