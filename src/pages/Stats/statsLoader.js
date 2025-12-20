@@ -1,7 +1,19 @@
-export async function statsLoader() {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users/1");
-  if (!response.ok) {
-    throw new Response("Failed to load stats", { status: 500 });
+export const statsLoader = async () => {
+  try {
+    const response = await fetch(
+      "https://rickandmortyapi.com/api/character?page=1"
+    );
+    if (!response.ok) throw new Error("Failed to preload data");
+
+    const data = await response.json();
+    return {
+      message: "Stats page loaded",
+      preloadedData: data,
+    };
+  } catch (error) {
+    return {
+      message: "Stats page loaded (preload failed)",
+      preloadedData: null,
+    };
   }
-  return response.json();
-}
+};

@@ -1,85 +1,130 @@
 import { useState, useEffect, useCallback } from 'react';
 import '../index.css'
 
-const InfinityScrollList = ({ url, renderItem }) => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [nextPage, setNextPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+export const InfinityScrollList = ({ category }) => {
+  const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [page, setPage] = useState(1)
+  const [hasMore, setHasMore] = useState(true)
+  const [error, setError] = useState(null)
 
-  const loadMore = useCallback(async () => {
-    if (loading || !hasMore) return;
+  const API_URLS = {
+    character: 'https://rickandmortyapi.com/api/character',
+    location: 'https://rickandmortyapi.com/api/location',
+    episode: 'https://rickandmortyapi.com/api/episode'
+  }
 
-    setLoading(true);
-    setError(null);
-
+  const fetchItems = useCallback(async (pageNum) => {
+    if (pageNum === 0) return
+    
     try {
-      const response = await fetch(`${url}?page=${nextPage}`);
-      if (!response.ok) throw new Error('Ошибка загрузки данных');
+      setLoading(true)
+      setError(null)
       
-      const result = await response.json();
-      setData(prev => [...prev, ...result.results]);
-      setNextPage(prev => prev + 1);
-      setHasMore(!!result.info.next);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }, [url, nextPage, loading, hasMore]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.innerHeight + document.documentElement.scrollTop 
-          >= document.documentElement.offsetHeight - 100) {
-        loadMore();
+      const response = await fetch(`${API_URLS[category]}?page=${pageNum}`)
+      if (!response.ok) throw new Error('Network response was not ok')
+      
+      const data = await response.json()
+      
+      if (data.results && data.results.length > 0) {
+        setItems(prev => {
+          const newItems = data.results.filter(newItem => 
+            !prev.some(existingItem => existingItem.id === newItem.id)
+          )
+          return [...prev, ...newItems]
+        })
       }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [loadMore]);
+      
+      setHasMore(data.info.next !== null)
+      
+    } catch (err) {
+      setError(err.message)
+      if (err.message.includes('404')) {
+        setHasMore(false)
+      }
+    } finally {
+      setLoading(false)
+    }
+  }, [category])
 
   useEffect(() => {
-    loadMore();
-  }, []);
+    setItems([])
+    setPage(1)
+    setHasMore(true)
+    setError(null)
+  }, [category])
 
-  if (error) {
-    return (
-      <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-        <p className="text-red-600">Ошибка: {error}</p>
-        <button
-          onClick={loadMore}
-          className="mt-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-        >
-          Попробовать снова
-        </button>
-      </div>
-    );
+  useEffect(() => {
+    fetchItems(1)
+  }, [category, fetchItems])
+
+  const handleScroll = useCallback(() => {
+    if (loading || !hasMore) return
+    
+    if (window.innerHeight + document.documentElement.scrollTop 
+        >= document.documentElement.offsetHeight - 100) {
+      setPage(prev => prev + 1)
+    }
+  }, [loading, hasMore])
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [handleScroll])
+
+  useEffect(() => {
+    if (page > 1) {
+      fetchItems(page)
+    }
+  }, [page, fetchItems])
+
+  const renderItem = (item) => {
+    switch (category) {
+      case 'character':
+        return (
+          <div key={item.id} className="scroll-item">
+            <img src={item.image} alt={item.name} className="item-image" />
+            <div className="item-info">
+              <h3>{item.name}</h3>
+              <p>{item.species} - {item.status}</p>
+            </div>
+          </div>
+        )
+      case 'location':
+        return (
+          <div key={item.id} className="scroll-item">
+            <div className="item-info">
+              <h3>{item.name}</h3>
+              <p>{item.type} - {item.dimension}</p>
+            </div>
+          </div>
+        )
+      case 'episode':
+        return (
+          <div key={item.id} className="scroll-item">
+            <div className="item-info">
+              <h3>{item.name}</h3>
+              <p>{item.episode} - {item.air_date}</p>
+            </div>
+          </div>
+        )
+      default:
+        return null
+    }
   }
 
   return (
-    <div className="space-y-4">
-      {data.map((item, index) => (
-        <div key={item.id || index}>
-          {renderItem(item)}
-        </div>
-      ))}
+    <div className="infinity-scroll-container">
+      <h2>{category.charAt(0).toUpperCase() + category.slice(1)} List</h2>
       
-      {loading && (
-        <div className="flex justify-center py-4">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-        </div>
-      )}
-      
-      {!hasMore && (
-        <div className="text-center py-4 text-gray-500">
-          Все данные загружены
-        </div>
-      )}
-    </div>
-  );
-};
+      <div className="items-list">
+        {items.map(renderItem)}
+      </div>
 
-export default InfinityScrollList;
+      {loading && <div className="loading">Загрузка дополнительных элементов...</div>}
+      {error && <div className="error">Error: {error}</div>}
+      {!hasMore && items.length > 0 && <div className="no-more">Больше нет элементов для загрузки.</div>}
+      {!hasMore && items.length === 0 && <div className="no-items">Элементы не найдены</div>}
+    </div>
+  )
+}

@@ -1,4 +1,4 @@
-import InfinityScrollList from './InfinityScrollList';
+import { InfinityScrollList } from './InfinityScrollList';
 import '../index.css'
 
 const Locations = () => {

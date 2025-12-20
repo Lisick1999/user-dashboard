@@ -8,7 +8,7 @@ const router = createBrowserRouter(routesConfig)
 export const App = () => {
   return (
     <ErrorBoundary>
-      <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+      <Suspense fallback={<div className="loading-spinner">Загрузка...</div>}>
         <RouterProvider router={router} />
       </Suspense>
     </ErrorBoundary>
