@@ -1,11 +1,13 @@
-import { Home } from "./pages/Home";
-import { Login } from "./pages/Login";
-import { Dashboard } from "./pages/Dashboard";
-import { Profile } from "./components/Profile";
-import { Settings } from "./components/Settings";
-import { Stats, statsLoader } from "./pages/Stats"; // Import from the barrel file
-import { ProtectedRoute } from "./components/ProtectedRoute";
-import { Navigate } from "react-router-dom";
+import { lazy } from 'react'
+import { Navigate } from 'react-router-dom'
+
+const Home = lazy(() => import('./pages/Home').then(module => ({ default: module.Home })))
+const Login = lazy(() => import('./pages/Login').then(module => ({ default: module.Login })))
+const Dashboard = lazy(() => import('./pages/Dashboard').then(module => ({ default: module.Dashboard })))
+const Profile = lazy(() => import('./components/Profile').then(module => ({ default: module.Profile })))
+const Settings = lazy(() => import('./components/Settings').then(module => ({ default: module.Settings })))
+const Stats = lazy(() => import('./pages/Stats').then(module => ({ default: module.Stats })))
+const ProtectedRoute = lazy(() => import('./components/ProtectedRoute').then(module => ({ default: module.ProtectedRoute })))
 
 export const ROUTE_PATHS = {
   HOME: "/",
@@ -55,7 +57,7 @@ export const routesConfig = [
       {
         path: "stats",
         element: <Stats />,
-        loader: statsLoader,
+        loader: () => import('./pages/Stats').then(module => module.statsLoader()),
       },
     ],
   },
