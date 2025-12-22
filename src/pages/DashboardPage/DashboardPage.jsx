@@ -1,7 +1,7 @@
 import { Outlet, useNavigate, useLocation } from 'react-router-dom'
-import { ROUTE_PATHS, NAV_ITEMS } from '../routes'
+import {NAV_ITEMS, ROUTE_PATHS} from "@/pages/routes.jsx";
 
-export const Dashboard = () => {
+export const DashboardPage = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
@@ -40,3 +40,29 @@ export const Dashboard = () => {
     </div>
   )
 }
+
+// import { Outlet, Link } from 'react-router-dom'
+// import {NAV_ITEMS} from "@/pages/routes.jsx";
+//
+// const DashboardPage = () => {
+//   return (
+//     <div className="dashboard-page">
+//       <aside className="sidebar">
+//         <nav>
+//           <ul>
+//             {NAV_ITEMS.map((item) => (
+//               <li key={item.path}>
+//                 <Link to={item.path}>{item.label}</Link>
+//               </li>
+//             ))}
+//           </ul>
+//         </nav>
+//       </aside>
+//       <main className="dashboard-content">
+//         <Outlet />
+//       </main>
+//     </div>
+//   )
+// }
+
+export default DashboardPage

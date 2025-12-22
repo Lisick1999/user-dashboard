@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react'
 import { useLoaderData } from 'react-router-dom'
-import { InfinityScrollList } from '../InfinityScrollList'
+import {InfinityScrollList} from "@/features/InfinityScrollList/InfinityScrollList.jsx";
 
 const CATEGORIES = [
   { value: 'character', label: 'Characters' },
@@ -36,11 +36,13 @@ export const Stats = () => {
         {categoryButtons}
       </div>
 
-      <InfinityScrollList 
-        category={selectedCategory} 
+      <InfinityScrollList
+        category={selectedCategory}
         key={selectedCategory}
         preloadedData={selectedCategory === 'character' ? (loaderData?.preloadedData || null) : null}
       />
     </div>
   )
 }
+
+export default Stats

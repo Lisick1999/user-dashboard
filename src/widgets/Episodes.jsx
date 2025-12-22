@@ -1,5 +1,5 @@
-import InfinityScrollList from './InfinityScrollList';
-import '../index.css'
+import '../app/styles/index.css'
+import {InfinityScrollList} from "@/features/InfinityScrollList/InfinityScrollList.jsx";
 
 const Episodes = () => {
   return (

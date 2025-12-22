@@ -1,13 +1,6 @@
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
-
-const Home = lazy(() => import('./pages/Home').then(module => ({ default: module.Home })))
-const Login = lazy(() => import('./pages/Login').then(module => ({ default: module.Login })))
-const Dashboard = lazy(() => import('./pages/Dashboard').then(module => ({ default: module.Dashboard })))
-const Profile = lazy(() => import('./components/Profile').then(module => ({ default: module.Profile })))
-const Settings = lazy(() => import('./components/Settings').then(module => ({ default: module.Settings })))
-const Stats = lazy(() => import('./pages/Stats').then(module => ({ default: module.Stats })))
-const ProtectedRoute = lazy(() => import('./components/ProtectedRoute').then(module => ({ default: module.ProtectedRoute })))
+import React, { Suspense } from 'react';
 
 export const ROUTE_PATHS = {
   HOME: "/",
@@ -23,6 +16,15 @@ export const NAV_ITEMS = [
   { path: ROUTE_PATHS.SETTINGS, label: "Settings" },
   { path: ROUTE_PATHS.STATS, label: "Statistics" },
 ];
+
+const Home = lazy(() => import('@/pages/HomePage/HomePage.jsx'))
+const Login = lazy(() => import('@/pages/LoginPage/LoginPage.jsx'))
+const Dashboard = lazy(() => import('@/pages/DashboardPage/DashboardPage.jsx'))
+const Profile = lazy(() => import('@/pages/ProfilePage/ProfilePage.jsx'))
+const Settings = lazy(() => import('@/pages/SettingsPage/SettingsPage.jsx'))
+const Stats = lazy(() => import('@/pages/Stats/Stats.jsx'));
+
+const ProtectedRoute = lazy(() => import('@/shared/ProtectedRoute/ProtectedRoute.jsx'))
 
 export const routesConfig = [
   {
@@ -56,8 +58,7 @@ export const routesConfig = [
       },
       {
         path: "stats",
-        element: <Stats />,
-        loader: () => import('./pages/Stats').then(module => module.statsLoader()),
+        element: <Stats />
       },
     ],
   },

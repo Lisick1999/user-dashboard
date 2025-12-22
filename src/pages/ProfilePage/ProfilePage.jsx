@@ -1,4 +1,4 @@
-export const Profile = () => {
+export const ProfilePage = () => {
   const userEmail = localStorage.getItem('userEmail') || 'User'
 
   return (
@@ -18,3 +18,5 @@ export const Profile = () => {
     </div>
   )
 }
+
+export default ProfilePage

@@ -1,4 +1,4 @@
-export const Settings = () => {
+export const SettingsPage = () => {
   return (
     <div>
       <h2 className="settings-title">Настройки аккаунта</h2>
@@ -19,3 +19,5 @@ export const Settings = () => {
     </div>
   )
 }
+
+export default SettingsPage

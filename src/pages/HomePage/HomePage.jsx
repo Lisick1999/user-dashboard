@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-export const Home = () => {
+const HomePage = () => {
   const navigate = useNavigate()
 
   return (
@@ -8,7 +8,7 @@ export const Home = () => {
       <div className="card home-card">
         <h1 className="home-title">Добро пожаловать в панель пользователя</h1>
         <p className="home-subtitle">Управляйте своим профилем, настройками и просматривайте статистику в одном месте.</p>
-        <button 
+        <button
           className="home-button"
           onClick={() => navigate('/login')}
         >
@@ -18,3 +18,5 @@ export const Home = () => {
     </div>
   )
 }
+
+export default HomePage;

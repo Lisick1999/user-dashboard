@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import '../index.css'
+import '@/app/styles/index.css'
 
 export const InfinityScrollList = ({ category }) => {
   const [items, setItems] = useState([])
