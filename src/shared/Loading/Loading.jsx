@@ -1,3 +1,11 @@
+import React from 'react';
+import styles from './Loading.module.css';
+
 export const Loading = () => {
-	return <div className="loading">Loading...</div>;
+	return (
+		<div className={styles.loading}>
+			<div className={styles.loadingSpinner}></div>
+			<p>Loading...</p>
+		</div>
+	);
 };

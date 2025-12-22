@@ -1,11 +1,12 @@
 import { useState, useMemo } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { InfinityScrollList } from '@/features/InfinityScrollList/InfinityScrollList.jsx';
+import './Stats.css';
 
 const CATEGORIES = [
-	{ value: 'character', label: 'Characters' },
-	{ value: 'location', label: 'Locations' },
-	{ value: 'episode', label: 'Episodes' },
+	{ value: 'character', label: 'Характеристики' },
+	{ value: 'location', label: 'Локации' },
+	{ value: 'episode', label: 'Эпизоды' },
 ];
 
 const Stats = () => {

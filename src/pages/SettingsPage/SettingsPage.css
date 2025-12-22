@@ -1,0 +1,97 @@
+.settings-page {
+	padding: 2rem 0;
+}
+
+.settings-header {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+.settings-title {
+	font-weight: 700;
+	margin-bottom: 1rem;
+}
+
+.settings-subtitle {
+	font-weight: 400;
+	color: #666;
+}
+
+.settings-grid {
+	margin-bottom: 3rem;
+}
+
+.setting-card {
+	height: 100%;
+	transition: all 0.3s ease;
+}
+
+.setting-card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.setting-content {
+	padding: 1.5rem;
+}
+
+.setting-content-mobile {
+	flex-direction: column;
+	text-align: center;
+	gap: 1rem;
+}
+
+.setting-content-desktop {
+	flex-direction: row;
+	text-align: left;
+	gap: 1.5rem;
+}
+
+.setting-icon {
+	color: #1976d2;
+}
+
+.setting-info {
+	flex-grow: 1;
+}
+
+.setting-name {
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+.setting-value {
+	color: #666;
+	font-size: 0.875rem;
+}
+
+.actions-container {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+}
+
+.actions-mobile {
+	flex-direction: column;
+}
+
+.actions-desktop {
+	flex-direction: row;
+}
+
+.action-button {
+	border-radius: 8px;
+	font-weight: 600;
+	text-transform: none;
+	padding: 12px 32px;
+}
+
+@media (max-width: 900px) {
+	.settings-title {
+		font-size: 2rem;
+	}
+
+	.settings-subtitle {
+		font-size: 1rem;
+	}
+}

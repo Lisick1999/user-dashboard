@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import '@/app/styles/index.css';
+import styles from './InfinityScrollList.module.css';
 
 export const InfinityScrollList = ({ category }) => {
 	const [items, setItems] = useState([]);
@@ -89,11 +89,15 @@ export const InfinityScrollList = ({ category }) => {
 		switch (category) {
 			case 'character':
 				return (
-					<div key={item.id} className="scroll-item">
-						<img src={item.image} alt={item.name} className="item-image" />
-						<div className="item-info">
-							<h3>{item.name}</h3>
-							<p>
+					<div key={item.id} className={styles.scrollItem}>
+						<img
+							src={item.image}
+							alt={item.name}
+							className={styles.itemImage}
+						/>
+						<div className={styles.itemInfo}>
+							<h3 className={styles.itemName}>{item.name}</h3>
+							<p className={styles.itemDetails}>
 								{item.species} - {item.status}
 							</p>
 						</div>
@@ -101,10 +105,10 @@ export const InfinityScrollList = ({ category }) => {
 				);
 			case 'location':
 				return (
-					<div key={item.id} className="scroll-item">
-						<div className="item-info">
-							<h3>{item.name}</h3>
-							<p>
+					<div key={item.id} className={styles.scrollItem}>
+						<div className={styles.itemInfo}>
+							<h3 className={styles.itemName}>{item.name}</h3>
+							<p className={styles.itemDetails}>
 								{item.type} - {item.dimension}
 							</p>
 						</div>
@@ -112,10 +116,10 @@ export const InfinityScrollList = ({ category }) => {
 				);
 			case 'episode':
 				return (
-					<div key={item.id} className="scroll-item">
-						<div className="item-info">
-							<h3>{item.name}</h3>
-							<p>
+					<div key={item.id} className={styles.scrollItem}>
+						<div className={styles.itemInfo}>
+							<h3 className={styles.itemName}>{item.name}</h3>
+							<p className={styles.itemDetails}>
 								{item.episode} - {item.air_date}
 							</p>
 						</div>
@@ -126,21 +130,30 @@ export const InfinityScrollList = ({ category }) => {
 		}
 	};
 
-	return (
-		<div className="infinity-scroll-container">
-			<h2>{category.charAt(0).toUpperCase() + category.slice(1)} List</h2>
+	const getCategoryTitle = () => {
+		const titles = {
+			character: 'Персонажи',
+			location: 'Локации',
+			episode: 'Эпизоды',
+		};
+		return titles[category] || category;
+	};
 
-			<div className="items-list">{items.map(renderItem)}</div>
+	return (
+		<div className={styles.infinityScrollContainer}>
+			<h2 className={styles.categoryTitle}>{getCategoryTitle()}</h2>
+
+			<div className={styles.itemsList}>{items.map(renderItem)}</div>
 
 			{loading && (
-				<div className="loading">Загрузка дополнительных элементов...</div>
+				<div className={styles.loading}>Загрузка дополнительных элементов...</div>
 			)}
-			{error && <div className="error">Error: {error}</div>}
+			{error && <div className={styles.error}>Ошибка: {error}</div>}
 			{!hasMore && items.length > 0 && (
-				<div className="no-more">Больше нет элементов для загрузки.</div>
+				<div className={styles.noMore}>Больше нет элементов для загрузки.</div>
 			)}
 			{!hasMore && items.length === 0 && (
-				<div className="no-items">Элементы не найдены</div>
+				<div className={styles.noItems}>Элементы не найдены</div>
 			)}
 		</div>
 	);

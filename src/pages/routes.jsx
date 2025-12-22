@@ -11,9 +11,9 @@ export const ROUTE_PATHS = {
 };
 
 export const NAV_ITEMS = [
-	{ path: ROUTE_PATHS.PROFILE, label: 'Profile' },
-	{ path: ROUTE_PATHS.SETTINGS, label: 'Settings' },
-	{ path: ROUTE_PATHS.STATS, label: 'Statistics' },
+	{ path: ROUTE_PATHS.PROFILE, label: 'Профиль' },
+	{ path: ROUTE_PATHS.SETTINGS, label: 'Настройки' },
+	{ path: ROUTE_PATHS.STATS, label: 'Статистика' },
 ];
 
 const Home = lazy(() => import('@/pages/HomePage/HomePage.jsx'));

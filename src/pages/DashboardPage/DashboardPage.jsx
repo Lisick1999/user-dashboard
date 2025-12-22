@@ -1,5 +1,6 @@
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { NAV_ITEMS, ROUTE_PATHS } from '@/pages/routes.jsx';
+import './DashboardPage.css';
 
 const DashboardPage = () => {
 	const navigate = useNavigate();
