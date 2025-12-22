@@ -1,6 +1,3 @@
-
-const Loading = () => {
-  return <div className="loading">Loading...</div>
-}
-
-export default Loading
+export const Loading = () => {
+	return <div className="loading">Loading...</div>;
+};

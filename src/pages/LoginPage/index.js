@@ -1,1 +1,1 @@
-export { default as LoginPage } from "./LoginPage.jsx";
+export * from './LoginPage.jsx';
