@@ -1,0 +1,2 @@
+export { fetchLocations } from './locationApi';
+

@@ -1,0 +1,2 @@
+export { useInfinityScroll } from './useInfinityScroll';
+

@@ -1,0 +1,2 @@
+export { routesConfig } from './routes';
+

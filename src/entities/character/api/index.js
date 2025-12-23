@@ -1,0 +1,2 @@
+export { fetchCharacters } from './characterApi';
+

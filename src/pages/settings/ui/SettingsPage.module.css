@@ -1,0 +1,98 @@
+.page {
+	padding: 2rem 0;
+}
+
+.header {
+	text-align: center;
+	margin-bottom: 3rem;
+}
+
+.title {
+	font-weight: 700;
+	margin-bottom: 1rem;
+}
+
+.subtitle {
+	font-weight: 400;
+	color: #666;
+}
+
+.grid {
+	margin-bottom: 3rem;
+}
+
+.card {
+	height: 100%;
+	transition: all 0.3s ease;
+}
+
+.card:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.cardContent {
+	padding: 1.5rem;
+}
+
+.contentMobile {
+	flex-direction: column;
+	text-align: center;
+	gap: 1rem;
+}
+
+.contentDesktop {
+	flex-direction: row;
+	text-align: left;
+	gap: 1.5rem;
+}
+
+.settingIcon {
+	color: #1976d2;
+}
+
+.info {
+	flex-grow: 1;
+}
+
+.name {
+	font-weight: 600;
+	margin-bottom: 0.5rem;
+}
+
+.value {
+	color: #666;
+	font-size: 0.875rem;
+}
+
+.actions {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+}
+
+.actionsMobile {
+	flex-direction: column;
+}
+
+.actionsDesktop {
+	flex-direction: row;
+}
+
+.actionButton {
+	border-radius: 8px;
+	font-weight: 600;
+	text-transform: none;
+	padding: 12px 32px;
+}
+
+@media (max-width: 900px) {
+	.title {
+		font-size: 2rem;
+	}
+
+	.subtitle {
+		font-size: 1rem;
+	}
+}
+

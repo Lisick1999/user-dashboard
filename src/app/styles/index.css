@@ -1,0 +1,118 @@
+body {
+	font-family:
+		'Roboto',
+		-apple-system,
+		BlinkMacSystemFont,
+		'Segoe UI',
+		'Oxygen',
+		'Ubuntu',
+		'Cantarell',
+		'Fira Sans',
+		'Droid Sans',
+		'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #c1c1c1;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #a1a1a1;
+}
+
+.container,
+.card,
+.home-container,
+.home-card,
+.home-title,
+.home-subtitle,
+.home-button,
+.login-container,
+.login-card,
+.login-title,
+.login-form,
+.form-group,
+.form-label,
+.form-input,
+.login-button,
+.dashboard-container,
+.dashboard-header,
+.dashboard-title,
+.logout-button,
+.dashboard-nav,
+.nav-button,
+.dashboard-content,
+.profile-title,
+.profile-info,
+.settings-title,
+.settings-content,
+.stats-title,
+.stats-info,
+.stats-item,
+.loading,
+.error,
+.infinity-scroll-container,
+.items-list,
+.scroll-item,
+.item-image,
+.item-info,
+.no-more,
+.loading-spinner,
+.error-boundary,
+.error-content,
+.retry-btn,
+.stats-container,
+.stats-header,
+.category-selector,
+.category-btn {
+	background: none;
+	border: none;
+	box-shadow: none;
+	border-radius: 0;
+	padding: 0;
+	margin: 0;
+	font: inherit;
+	color: inherit;
+	text-decoration: none;
+	list-style: none;
+}
+
+body {
+	background: none;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.mt-1 {
+	margin-top: 0.25rem;
+}
+.mt-2 {
+	margin-top: 0.5rem;
+}
+.mt-3 {
+	margin-top: 1rem;
+}
+.mt-4 {
+	margin-top: 1.5rem;
+}
+.mt-5 {
+	margin-top: 3rem;
+}
